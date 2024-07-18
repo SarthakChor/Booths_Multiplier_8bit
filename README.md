@@ -12,7 +12,7 @@ This project implements an 8-bit Booth's Multiplier using Verilog. Booth's algor
 
 ## File Structure
 
-- `Booths_Multiplier_8bit.v`: Verilog module implementing the 8-bit Booth's multiplier.
+- `Booths_Multiplier_8bit.v`: Verilog module implementing the 8-bit Booth's multiplier. 
 
 ## How It Works
 
