@@ -1,14 +1,21 @@
 `timescale 1ns / 1ps
 
-module Booths_Multiplier_8bit(clk,Product,In1,In2);
-input clk;
+module Booths_Multiplier_8bit(clk_out,clk_in,Product,In1,In2);
+//inputs
+input clk_in;
 input [7:0]In1;
 input [7:0]In2;
+//Outputs
 output reg [15:0]Product;
+output clk_out;
+       
 integer i;
 reg [16:0]comp2s_In1,Accu0,Accu1;
 
-always @ (posedge clk) // Positive edge triggred operations
+Clk_divider C1(clk_in,clk_out);    //clk divider is used to slow down the speed of clock as Nexys 4 ddr have in-built 100MHz clock which cannot be slow down.
+                                   //We can not notice the clock pulse with this frequency hence we need to use the clock divider module.
+
+always @ (posedge clk_out) // Positive edge triggred operations
 begin 
        comp2s_In1 = {~In1 + 1'b1,9'b000000000}; // 2s complement of In1
        Accu0 = {In1,9'b000000000};
