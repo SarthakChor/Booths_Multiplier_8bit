@@ -12,7 +12,8 @@ This project implements an 8-bit Booth's Multiplier using Verilog. Booth's algor
 
 ## File Structure
 
-- `Booths_Multiplier_8bit.v`: Verilog module implementing the 8-bit Booth's multiplier. 
+- `Booths_Multiplier_8bit.v`: Verilog module implementing the 8-bit Booth's multiplier.
+- `Clk_divider.v`:Verilog module to slow down the Clock frequency of FPGA board.
 
 ## How It Works
 
@@ -22,7 +23,9 @@ This project implements an 8-bit Booth's Multiplier using Verilog. Booth's algor
 2. **Booth's Algorithm**:
    - Iterates through 8 cycles, checking the least significant bits of the accumulator to determine whether to add, subtract, or shift.
    - Performs arithmetic right shifts after each operation.
-3. **Result**:
+3. **Clk divider module**:
+   - This module slow downs the in-built clock frequency of the FPGA module because it is high enough that we cant notice its pulse.
+4. **Result**:
    - The final product is obtained from the upper 16 bits of the accumulator after 8 iterations.
 
 ## Usage
@@ -30,10 +33,11 @@ This project implements an 8-bit Booth's Multiplier using Verilog. Booth's algor
 1. **Inputs**:
    - `In1`: 8-bit signed integer (multiplicand).
    - `In2`: 8-bit signed integer (multiplier).
-   - `clk`: Clock signal.
+   - `clk_in`: Clock signal.
 
 2. **Output**:
    - `Product`: 16-bit signed integer (result of the multiplication).
+   - `clk_out`: Clock at which the output is generated. Not needed to define as output but I am using this to check weather the output is calculated at its positive edge or not.
 
 ## Simulation
 
