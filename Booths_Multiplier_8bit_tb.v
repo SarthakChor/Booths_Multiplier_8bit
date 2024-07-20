@@ -2,19 +2,20 @@
 
 module Booths_Multiplier_8bit_tb();
 // Inputs
-reg clk;
+reg clk_in;
 reg [7:0] In1;
 reg [7:0] In2;
 
 // Outputs
 wire [15:0] Product;
+wire clk_out;
 
-Booths_Multiplier_8bit dut (clk,Product,In1,In2);
+Booths_Multiplier_8bit dut (clk_out,clk_in,Product,In1,In2);
 
 initial begin
 	// Initialize Inputs
-	clk = 0;
-	forever #2 clk =~clk;
+	clk_in = 0;
+	forever #2 clk_in =~clk_in;
 	end
 	
 initial begin
